@@ -391,8 +391,7 @@ class Route
         ];
         foreach ($keys as $key => $glue) {
             $value = null;
-            if (
-                strpos($this->template, ':' . $key) !== false
+            if (strpos($this->template, ':' . $key) !== false
                 || strpos($this->template, '{' . $key . '}') !== false
             ) {
                 $value = '_' . $key;
@@ -624,8 +623,7 @@ class Route
         $defaults = $this->defaults;
         $context += ['params' => [], '_port' => null, '_scheme' => null, '_host' => null];
 
-        if (
-            !empty($this->options['persist']) &&
+        if (!empty($this->options['persist']) &&
             is_array($this->options['persist'])
         ) {
             $url = $this->_persistParams($url, $context['params']);
@@ -650,8 +648,7 @@ class Route
 
         // Check for properties that will cause an
         // absolute url. Copy the other properties over.
-        if (
-            isset($hostOptions['_scheme']) ||
+        if (isset($hostOptions['_scheme']) ||
             isset($hostOptions['_port']) ||
             isset($hostOptions['_host'])
         ) {
@@ -833,8 +830,7 @@ class Route
         }
 
         $out = str_replace('//', '/', $out);
-        if (
-            isset($params['_scheme']) ||
+        if (isset($params['_scheme']) ||
             isset($params['_host']) ||
             isset($params['_port'])
         ) {

@@ -2835,8 +2835,7 @@ class Email implements JsonSerializable, Serializable
             $item = (string)$item;
         }
 
-        if (
-            is_resource($item) ||
+        if (is_resource($item) ||
             $item instanceof Closure ||
             $item instanceof PDO
         ) {

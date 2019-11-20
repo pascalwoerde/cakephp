@@ -293,8 +293,7 @@ class ExceptionRenderer implements ExceptionRendererInterface
         $exception = $this->_unwrap($exception);
         $message = $exception->getMessage();
 
-        if (
-            !Configure::read('debug') &&
+        if (!Configure::read('debug') &&
             !($exception instanceof HttpException)
         ) {
             if ($code < 500) {

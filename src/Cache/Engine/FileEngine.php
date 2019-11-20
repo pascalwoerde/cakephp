@@ -394,8 +394,7 @@ class FileEngine extends CacheEngine
         if (!$createKey && !$path->isFile()) {
             return false;
         }
-        if (
-            empty($this->_File) ||
+        if (empty($this->_File) ||
             $this->_File->getBasename() !== $key ||
             $this->_File->valid() === false
         ) {

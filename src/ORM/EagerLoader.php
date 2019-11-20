@@ -557,8 +557,7 @@ class EagerLoader
         $paths += ['aliasPath' => '', 'propertyPath' => '', 'root' => $alias];
         $paths['aliasPath'] .= '.' . $alias;
 
-        if (
-            isset($options['matching']) &&
+        if (isset($options['matching']) &&
             $options['matching'] === true
         ) {
             $paths['propertyPath'] = '_matchingData.' . $alias;

@@ -95,8 +95,7 @@ class CsrfProtectionMiddleware
      */
     public function __invoke(ServerRequest $request, Response $response, $next)
     {
-        if (
-            $this->whitelistCallback !== null
+        if ($this->whitelistCallback !== null
             && call_user_func($this->whitelistCallback, $request) === true
         ) {
             return $next($request, $response);

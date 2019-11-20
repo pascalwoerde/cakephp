@@ -225,8 +225,7 @@ trait SqlDialectTrait
             $conditions->traverse(function ($expression) {
                 if ($expression instanceof Comparison) {
                     $field = $expression->getField();
-                    if (
-                        is_string($field) &&
+                    if (is_string($field) &&
                         strpos($field, '.') !== false
                     ) {
                         list(, $unaliasedField) = explode('.', $field, 2);

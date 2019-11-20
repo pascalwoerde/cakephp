@@ -317,8 +317,7 @@ class SqliteSchema extends BaseSchema
             TableSchema::TYPE_DECIMAL,
         ];
 
-        if (
-            in_array($data['type'], $hasUnsigned, true) &&
+        if (in_array($data['type'], $hasUnsigned, true) &&
             isset($data['unsigned']) && $data['unsigned'] === true
         ) {
             if ($data['type'] !== TableSchema::TYPE_INTEGER || [$name] !== (array)$schema->primaryKey()) {
@@ -334,8 +333,7 @@ class SqliteSchema extends BaseSchema
             $out .= ' TEXT';
         }
 
-        if (
-            $data['type'] === TableSchema::TYPE_STRING ||
+        if ($data['type'] === TableSchema::TYPE_STRING ||
             ($data['type'] === TableSchema::TYPE_TEXT && $data['length'] === TableSchema::LENGTH_TINY)
         ) {
             $out .= ' VARCHAR';
@@ -358,16 +356,14 @@ class SqliteSchema extends BaseSchema
             TableSchema::TYPE_SMALLINTEGER,
             TableSchema::TYPE_INTEGER,
         ];
-        if (
-            in_array($data['type'], $integerTypes, true) &&
+        if (in_array($data['type'], $integerTypes, true) &&
             isset($data['length']) && [$name] !== (array)$schema->primaryKey()
         ) {
                 $out .= '(' . (int)$data['length'] . ')';
         }
 
         $hasPrecision = [TableSchema::TYPE_FLOAT, TableSchema::TYPE_DECIMAL];
-        if (
-            in_array($data['type'], $hasPrecision, true) &&
+        if (in_array($data['type'], $hasPrecision, true) &&
             (isset($data['length']) || isset($data['precision']))
         ) {
             $out .= '(' . (int)$data['length'] . ',' . (int)$data['precision'] . ')';
@@ -401,8 +397,7 @@ class SqliteSchema extends BaseSchema
     public function constraintSql(TableSchema $schema, $name)
     {
         $data = $schema->getConstraint($name);
-        if (
-            $data['type'] === TableSchema::CONSTRAINT_PRIMARY &&
+        if ($data['type'] === TableSchema::CONSTRAINT_PRIMARY &&
             count($data['columns']) === 1 &&
             $schema->getColumn($data['columns'][0])['type'] === TableSchema::TYPE_INTEGER
         ) {

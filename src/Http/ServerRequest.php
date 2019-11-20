@@ -383,8 +383,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
         $method = $this->getEnv('REQUEST_METHOD');
         $override = false;
 
-        if (
-            in_array($method, ['PUT', 'DELETE', 'PATCH'], true) &&
+        if (in_array($method, ['PUT', 'DELETE', 'PATCH'], true) &&
             strpos($this->contentType(), 'application/x-www-form-urlencoded') === 0
         ) {
             $data = $this->input();
@@ -1336,8 +1335,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
     {
         $new = clone $this;
 
-        if (
-            !is_string($method) ||
+        if (!is_string($method) ||
             !preg_match('/^[!#$%&\'*+.^_`\|~0-9a-z-]+$/i', $method)
         ) {
             throw new InvalidArgumentException(sprintf(

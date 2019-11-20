@@ -124,8 +124,7 @@ class QueryCompiler
     protected function _sqlCompiler(&$sql, $query, $generator)
     {
         return function ($parts, $name) use (&$sql, $query, $generator) {
-            if (
-                !isset($parts) ||
+            if (!isset($parts) ||
                 ((is_array($parts) || $parts instanceof \Countable) && !count($parts))
             ) {
                 return;

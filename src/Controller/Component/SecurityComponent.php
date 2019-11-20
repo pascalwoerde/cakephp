@@ -115,8 +115,7 @@ class SecurityComponent extends Component
                 throw new AuthSecurityException(sprintf('Action %s is defined as the blackhole callback.', $this->_action));
             }
 
-            if (
-                !in_array($this->_action, (array)$this->_config['unlockedActions']) &&
+            if (!in_array($this->_action, (array)$this->_config['unlockedActions']) &&
                 $hasData &&
                 $isNotRequestAction &&
                 $this->_config['validatePost']
@@ -237,8 +236,7 @@ class SecurityComponent extends Component
      */
     protected function _secureRequired(Controller $controller)
     {
-        if (
-            is_array($this->_config['requireSecure']) &&
+        if (is_array($this->_config['requireSecure']) &&
             !empty($this->_config['requireSecure'])
         ) {
             $requireSecure = $this->_config['requireSecure'];
@@ -265,8 +263,7 @@ class SecurityComponent extends Component
     protected function _authRequired(Controller $controller)
     {
         $request = $controller->getRequest();
-        if (
-            is_array($this->_config['requireAuth']) &&
+        if (is_array($this->_config['requireAuth']) &&
             !empty($this->_config['requireAuth']) &&
             $request->getData()
         ) {
@@ -281,8 +278,7 @@ class SecurityComponent extends Component
                 if ($this->session->check('_Token')) {
                     $tData = $this->session->read('_Token');
 
-                    if (
-                        !empty($tData['allowedControllers']) &&
+                    if (!empty($tData['allowedControllers']) &&
                         !in_array($request->getParam('controller'), $tData['allowedControllers'])
                     ) {
                         throw new AuthSecurityException(
@@ -293,8 +289,7 @@ class SecurityComponent extends Component
                             )
                         );
                     }
-                    if (
-                        !empty($tData['allowedActions']) &&
+                    if (!empty($tData['allowedActions']) &&
                         !in_array($request->getParam('action'), $tData['allowedActions'])
                     ) {
                         throw new AuthSecurityException(

@@ -394,8 +394,7 @@ class Paginator implements PaginatorInterface
             }
         }
 
-        if (
-            $options['sort'] === null
+        if ($options['sort'] === null
             && count($options['order']) === 1
             && !is_numeric(key($options['order']))
         ) {
